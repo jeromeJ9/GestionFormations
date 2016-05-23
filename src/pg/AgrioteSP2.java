@@ -1,4 +1,4 @@
-package agriotesp2;
+package pg;
 
 import viewControleur.ControleurViews;
 import java.sql.SQLException;
