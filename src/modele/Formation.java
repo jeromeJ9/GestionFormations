@@ -19,6 +19,7 @@ public class Formation {
     public Formation(String intitule, String description) {
         this.intitule = intitule;
         this.description = description;
+       
     }
     
     public Formation(int id,String intitule, String description, List<Module> module) {
@@ -32,6 +33,7 @@ public class Formation {
         this.id = id;
         this.intitule = intitule;
         this.description = description;
+       
     }
 
     public int getId() {

@@ -28,28 +28,16 @@ public class LesFormations extends GridPane{
     public LesFormations() {
         this.titre = "Les Formations";
         titre();
-        
-        
     }
-
     public Button[] getBouton() {
         return bouton;
     }
-    public String getValueButton(int i){
-        return bouton[i].getEllipsisString();
-    }
-    public void setBouton(Button[] bouton) {
-        this.bouton = bouton;
-    }
-
     public Label[] getBlanck() {
         return blanck;
     }
-    
     public void setListeFormations(List<Formation> listeFormations) {
         this.listeFormations = listeFormations;
     }
-
     public void setNbMaxID(int nbMaxID) {
         this.nbMaxID = nbMaxID;
     }
@@ -74,11 +62,11 @@ public class LesFormations extends GridPane{
         int j =1;
             for (Formation uneForm : listeFormations){
                 blanck[uneForm.getId()] = new Label("  ");
-            blanck[uneForm.getId()].setStyle("-fx-background-color: #F4F4F4;");
-            blanck[uneForm.getId()].setMinWidth(20);
-            blanck[uneForm.getId()].setMinHeight(35);
-            GridPane.setHalignment(blanck[uneForm.getId()], HPos.RIGHT);
-            this.add( blanck[uneForm.getId()], 0, i);
+                blanck[uneForm.getId()].setStyle("-fx-background-color: #F4F4F4;");
+                blanck[uneForm.getId()].setMinWidth(20);
+                blanck[uneForm.getId()].setMinHeight(35);
+                GridPane.setHalignment(blanck[uneForm.getId()], HPos.RIGHT);
+                this.add( blanck[uneForm.getId()], 0, i);
             
                 Text intitule = new Text(uneForm.getIntitule());
                 intitule.setFont(Font.font("Arial", FontWeight.NORMAL,20));
@@ -103,7 +91,6 @@ public class LesFormations extends GridPane{
                 this.add(description, 1, i+2);
                 this.add(nbJours, 1, i+3);
                 this.add(soulign, 1, i+5);
-                //this.setGridLinesVisible(true);
                 
            
                 bouton[uneForm.getId()] = new Button("+ details"); 
@@ -116,17 +103,15 @@ public class LesFormations extends GridPane{
                 j++;
             }
            
-           ColumnConstraints cc1 = new ColumnConstraints();
+            ColumnConstraints cc1 = new ColumnConstraints();
           
             cc1.setHalignment(HPos.LEFT); 
             
-         Region r1 = new Region();
+            Region r1 = new Region();
             r1.setMaxWidth(8);
             GridPane.setHalignment(r1, HPos.RIGHT);
-           
-                GridPane.setConstraints(r1, 0, 3, 1, Integer.MAX_VALUE);
-               this.getChildren().set(1, r1); 
-            
+            GridPane.setConstraints(r1, 0, 3, 1, Integer.MAX_VALUE);
+            this.getChildren().set(1, r1); 
             r1.setStyle("-fx-background-color:#787500 ");
             this.getChildren().set(1, r1); // this.getColumnConstraints().addAll(cc1);
         

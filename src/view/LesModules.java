@@ -9,6 +9,7 @@ import javafx.scene.text.FontWeight;
 import javafx.scene.text.Text;
 import modele.Module;
 import javafx.scene.control.Label;
+import javafx.scene.layout.Region;
 import javafx.scene.text.TextAlignment;
 
 public class LesModules extends GridPane{
@@ -16,8 +17,8 @@ public class LesModules extends GridPane{
     private String titre;
    
 
-    public LesModules() {
-        this.titre = "Les modules";
+    public LesModules(String titre) {
+        this.titre = titre;
         titre();
     }
 
@@ -76,7 +77,12 @@ public class LesModules extends GridPane{
             
             
         }
-       
+       Region r = new Region();
+        r.setMaxWidth(8);
+        GridPane.setHalignment(r, HPos.RIGHT);
+        GridPane.setConstraints(r, 0, 1, 1, Integer.MAX_VALUE);
+        this.getChildren().set(1, r); 
+        r.setStyle("-fx-background-color:#787500 ");
         
                 
     }

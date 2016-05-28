@@ -49,6 +49,9 @@ public class AjoutFormation extends GridPane{
     public void setListeProvisoireModules(List<Module> module) {
         listeProvisoireModules= module;
     }
+    public void initListeProvisoireModules(){
+        listeProvisoireModules = null;
+    }
 
     public List<Module> getListeProvisoireModules() {
         return listeProvisoireModules;

@@ -5,7 +5,7 @@
  */
 package dao;
 
-import controleur.ServicesLesFormations;
+import service.ServicesLesFormations;
 import java.util.ArrayList;
 import java.util.List;
 import modele.Formation;
@@ -28,22 +28,24 @@ public class ModuleFormationDaoTest extends DaoTest{
     @Test
     public void testSetModulesPourFormation() throws Exception {
         System.out.println("setModulesPourFormation");
-       
-        ServicesLesFormations serv = new ServicesLesFormations();
-        serv.rempliListes();
-        List<Module> expResult = serv.getListeModules();
-               
-        FormationDao formDao = new FormationDao();
-        int idForm = formDao.setNewFormation("test", "test");
-        ModuleFormationDao instance = new ModuleFormationDao();
-        instance.setModulesPourFormation(idForm, expResult);
+        ServicesLesFormations serv  = new ServicesLesFormations();
+        ModuleFormationDao mfd = new ModuleFormationDao();
+        Module unMod = serv.donneModuleParId(3);
+        List<Module> listeMod = new ArrayList<>();
+        listeMod.add(unMod);
+        mfd.setModulesPourFormation(6, listeMod);
         
-        ModuleDao modDao = new ModuleDao();
-        serv.rempliListes();
-        Formation form = (serv.donneFormationParId(idForm));
-        System.out.println("formation:    "+form);
-        List<Module> result = modDao.getModulesByFormation(form);
-        assertEquals(expResult, result);
+        List<Formation> lesForm = serv.getFormationsAvecModules();
+        boolean result = false;
+        for (Formation uneForm : lesForm){
+            for (Module unModule : uneForm.getModule()){
+                if (uneForm.getId() == 6 && unModule.getId() == 3)
+                    result = true;
+            }
+        }
+        assertTrue(result);
+        
+        
         
     }
 
